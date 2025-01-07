@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxrxxd8k4gese"]
+[gd_scene load_steps=11 format=3 uid="uid://bxrxxd8k4gese"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_c1ekh"]
 [ext_resource type="Texture2D" uid="uid://ddya6002lej3v" path="res://scenes/player/assets/player_moving_1.svg" id="2_by0n8"]
 [ext_resource type="Texture2D" uid="uid://b4m3dkvban4am" path="res://scenes/player/assets/player_moving_2.svg" id="3_8ckrg"]
+[ext_resource type="Texture2D" uid="uid://co6a6t005s70a" path="res://scenes/player/assets/player_moving_3.svg" id="4_n473n"]
+[ext_resource type="Texture2D" uid="uid://bs3h1yapek2ed" path="res://scenes/player/assets/player_moving_4.svg" id="5_7cyl4"]
+[ext_resource type="Texture2D" uid="uid://c017goqprck8y" path="res://scenes/player/assets/player_moving_5.svg" id="6_2elep"]
+[ext_resource type="Texture2D" uid="uid://c2bx6p3mds865" path="res://scenes/player/assets/player_moving_6.svg" id="7_5olpd"]
+[ext_resource type="Texture2D" uid="uid://8kt0u0b63v06" path="res://scenes/player/assets/player_moving_7.svg" id="8_mo5vv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fwoaa"]
 animations = [{
@@ -12,10 +17,43 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_8ckrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n473n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7cyl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2elep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5olpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mo5vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5olpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2elep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7cyl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n473n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8ckrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_by0n8")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 10.0
+"speed": 60.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m23si"]
