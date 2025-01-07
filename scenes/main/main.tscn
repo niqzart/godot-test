@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch4l2ierqwwhg"]
+[gd_scene load_steps=5 format=3 uid="uid://ch4l2ierqwwhg"]
 
 [ext_resource type="PackedScene" uid="uid://bxrxxd8k4gese" path="res://scenes/player/player.tscn" id="1_dal62"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_uaoic"]
 [ext_resource type="PackedScene" uid="uid://brlny0e8pd6bx" path="res://scenes/hud/hud.tscn" id="2_n5usj"]
+[ext_resource type="PackedScene" uid="uid://efy7iuhbld6x" path="res://scenes/spawner/spawner.tscn" id="4_h70lj"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_uaoic")
 
 [node name="HUD" parent="." instance=ExtResource("2_n5usj")]
+
+[node name="ScoreTimer" type="Timer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_dal62")]
 
@@ -18,8 +21,8 @@ position = Vector2(500, 250)
 wait_time = 2.0
 one_shot = true
 
-[node name="ScoreTimer" type="Timer" parent="."]
+[node name="Spawner" parent="." instance=ExtResource("4_h70lj")]
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

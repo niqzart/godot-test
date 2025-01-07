@@ -11,6 +11,7 @@ func new_game():
 
 func _on_start_timer_timeout() -> void:
     $ScoreTimer.start()
+    $Spawner.start_spawning()
 
 
 func _on_score_timer_timeout() -> void:
