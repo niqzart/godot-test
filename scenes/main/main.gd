@@ -4,6 +4,7 @@ var score: int
 
 
 func new_game() -> void:
+    $Spawner.clear_spawned()
     score = 0
     $HUD.update_score(score)
     $Player.start($StartPosition.position)

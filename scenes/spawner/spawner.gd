@@ -17,8 +17,13 @@ func _on_spawn_timer_timeout() -> void:
     enemy.rotation = spawn_location.rotation + PI / 2 + randf_range(-PI / 4, PI / 4)
     enemy.linear_velocity = Vector2(randf_range(150.0, 250.0), 0.0).rotated(enemy.rotation)
 
+    enemy.add_to_group("enemies")
+
     add_child(enemy)
 
 
 func stop_spawning() -> void:
     $SpawnTimer.stop()
+
+func clear_spawned() -> void:
+    get_tree().call_group("enemies", "queue_free")
