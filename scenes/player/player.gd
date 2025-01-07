@@ -28,22 +28,14 @@ func _process(delta: float) -> void:
     if Input.is_action_pressed("move_up"):
         velocity.y -= 1
 
-    if velocity.length() > 0:
-        velocity = velocity.normalized() * speed
-        $AnimatedSprite2D.play()
-    else:
+    if velocity.length() == 0:
         $AnimatedSprite2D.stop()
+        return
 
-    position += velocity * delta
+    rotation = velocity.angle() + PI / 2
+    position += velocity.normalized() * speed * delta
     position = position.clamp(Vector2.ZERO, screen_size)
-
-    if velocity.x != 0:
-        $AnimatedSprite2D.animation = "walk"
-        $AnimatedSprite2D.flip_v = false
-        $AnimatedSprite2D.flip_h = velocity.x < 0
-    elif velocity.y != 0:
-        $AnimatedSprite2D.animation = "up"
-        $AnimatedSprite2D.flip_v = velocity.y > 0
+    $AnimatedSprite2D.play()
 
 
 func _on_body_entered(_body: Node2D) -> void:
