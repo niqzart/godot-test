@@ -18,3 +18,7 @@ func _on_spawn_timer_timeout() -> void:
     enemy.linear_velocity = Vector2(randf_range(150.0, 250.0), 0.0).rotated(enemy.rotation)
 
     add_child(enemy)
+
+
+func stop_spawning() -> void:
+    $SpawnTimer.stop()
