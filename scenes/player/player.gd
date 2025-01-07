@@ -8,6 +8,12 @@ func _ready() -> void:
     screen_size = get_viewport_rect().size
 
 
+func start(starting_position: Vector2) -> void:
+    position = starting_position
+    $CollisionShape2D.disabled = false
+    show()
+
+
 func _process(delta: float) -> void:
     var velocity: Vector2 = Vector2.ZERO
     if Input.is_action_pressed("move_right"):
