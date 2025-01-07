@@ -9,10 +9,6 @@ func new_game():
     $StartTimer.start()
 
 
-func _ready() -> void:
-    new_game()
-
-
 func _on_start_timer_timeout() -> void:
     $ScoreTimer.start()
 
