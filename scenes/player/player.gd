@@ -5,6 +5,7 @@ var screen_size: Vector2
 
 
 func _ready() -> void:
+    hide()
     screen_size = get_viewport_rect().size
 
 
