@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://dudxc53fwh0b8"]
+
+[ext_resource type="Script" path="res://scenes/enemies/copter/copter.gd" id="1_p47no"]
+[ext_resource type="Texture2D" uid="uid://5tj0bj6o4scl" path="res://scenes/enemies/copter/assets/copter_moving_1.svg" id="2_a4yr7"]
+[ext_resource type="Texture2D" uid="uid://ce3sq5qcy71tf" path="res://scenes/enemies/copter/assets/copter_moving_2.svg" id="3_wawy2"]
+[ext_resource type="Texture2D" uid="uid://o85yqiprs5q1" path="res://scenes/enemies/copter/assets/copter_moving_3.svg" id="4_b1ctm"]
+[ext_resource type="PackedScene" uid="uid://b4iujhi3h0ikh" path="res://scenes/components/deleted_on_screen_leave/deleted_on_screen_leave.tscn" id="5_8mb82"]
+[ext_resource type="Texture2D" uid="uid://q8ktr3on51oc" path="res://scenes/enemies/copter/assets/copter_moving_4.svg" id="5_ggtqq"]
+[ext_resource type="Texture2D" uid="uid://dp478qsyd4cyo" path="res://scenes/enemies/copter/assets/copter_moving_5.svg" id="6_0tb86"]
+[ext_resource type="Texture2D" uid="uid://0yrgmdxgjggu" path="res://scenes/enemies/copter/assets/copter_moving_6.svg" id="7_uppbo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxfit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a4yr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wawy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b1ctm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ggtqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0tb86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uppbo")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 60.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dl2e"]
+size = Vector2(114, 114)
+
+[node name="Copter" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_p47no")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_mxfit")
+animation = &"moving"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5dl2e")
+
+[node name="DeletedOnScreenLeave" parent="." instance=ExtResource("5_8mb82")]
+position = Vector2(0, 108)
+scale = Vector2(0.4, 0.4)
