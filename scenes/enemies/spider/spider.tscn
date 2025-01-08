@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctxu11dajpxve"]
+
+[ext_resource type="Script" path="res://scenes/enemies/spider/spider.gd" id="1_kr8c8"]
+[ext_resource type="Texture2D" uid="uid://d10warh6eunh6" path="res://scenes/enemies/spider/assets/spider_moving_3.svg" id="2_y6t7b"]
+[ext_resource type="Texture2D" uid="uid://co8aj6y4wanm3" path="res://scenes/enemies/spider/assets/spider_moving_1.svg" id="3_43g8r"]
+[ext_resource type="Texture2D" uid="uid://y8r1h6mle007" path="res://scenes/enemies/spider/assets/spider_moving_2.svg" id="4_jfyfn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxfit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_43g8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jfyfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_43g8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y6t7b")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_futqh"]
+radius = 40.0
+
+[node name="Spider" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_kr8c8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_mxfit")
+animation = &"moving"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_futqh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
