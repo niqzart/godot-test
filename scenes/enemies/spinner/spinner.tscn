@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://f4bsd4tx4wp6"]
+[gd_scene load_steps=11 format=3 uid="uid://f4bsd4tx4wp6"]
 
 [ext_resource type="Script" path="res://scenes/enemies/spinner/spinner.gd" id="1_8oe71"]
 [ext_resource type="Texture2D" uid="uid://gixfukttmfro" path="res://scenes/enemies/spinner/assets/spinner_moving_1.svg" id="2_f5ekb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cqq7y4ws1i5xy" path="res://scenes/enemies/spinner/assets/spinner_moving_4.svg" id="5_cihpw"]
 [ext_resource type="Texture2D" uid="uid://dnyquq66qhywe" path="res://scenes/enemies/spinner/assets/spinner_moving_5.svg" id="6_geeqq"]
 [ext_resource type="Texture2D" uid="uid://ci8ewfo4m62hl" path="res://scenes/enemies/spinner/assets/spinner_moving_6.svg" id="7_eisvm"]
+[ext_resource type="PackedScene" uid="uid://b4iujhi3h0ikh" path="res://scenes/components/deleted_on_screen_leave/deleted_on_screen_leave.tscn" id="8_7lpbb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mxfit"]
 animations = [{
@@ -50,6 +51,6 @@ animation = &"moving"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k7twq")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="DeletedOnScreenLeave" parent="." instance=ExtResource("8_7lpbb")]
+position = Vector2(-2.38419e-07, 48)
+scale = Vector2(0.4, 0.4)

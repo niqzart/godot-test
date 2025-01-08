@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6w14fnlfnfck"]
+[gd_scene load_steps=11 format=3 uid="uid://c6w14fnlfnfck"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_5qwl3"]
 [ext_resource type="Texture2D" uid="uid://ctgd0pp3eeecc" path="res://scenes/enemy/img/enemy_flying_1.png" id="1_313xm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cwvufgkebgp44" path="res://scenes/enemy/img/enemy_swimming_2.png" id="4_awuq7"]
 [ext_resource type="Texture2D" uid="uid://dhtggpebtjkqs" path="res://scenes/enemy/img/enemy_walking_1.png" id="5_rb2dn"]
 [ext_resource type="Texture2D" uid="uid://demps0tlxy1kk" path="res://scenes/enemy/img/enemy_walking_2.png" id="6_07b55"]
+[ext_resource type="PackedScene" uid="uid://b4iujhi3h0ikh" path="res://scenes/components/deleted_on_screen_leave/deleted_on_screen_leave.tscn" id="8_3ilcu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rqrko"]
 animations = [{
@@ -52,7 +53,6 @@ height = 100.0
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_5qwl3")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.57079
@@ -63,6 +63,6 @@ animation = &"flying"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_xer00")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="DeletedOnScreenLeave" parent="." instance=ExtResource("8_3ilcu")]
+position = Vector2(2.38419e-07, 56)
+scale = Vector2(0.4, 0.4)
