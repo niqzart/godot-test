@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://f4bsd4tx4wp6"]
+
+[ext_resource type="Script" path="res://scenes/enemies/spinner/spinner.gd" id="1_8oe71"]
+[ext_resource type="Texture2D" uid="uid://gixfukttmfro" path="res://scenes/enemies/spinner/assets/spinner_moving_1.svg" id="2_f5ekb"]
+[ext_resource type="Texture2D" uid="uid://cmhr2k1u3p67g" path="res://scenes/enemies/spinner/assets/spinner_moving_2.svg" id="3_n6qc6"]
+[ext_resource type="Texture2D" uid="uid://dne15jiwf5f2c" path="res://scenes/enemies/spinner/assets/spinner_moving_3.svg" id="4_c5hhv"]
+[ext_resource type="Texture2D" uid="uid://cqq7y4ws1i5xy" path="res://scenes/enemies/spinner/assets/spinner_moving_4.svg" id="5_cihpw"]
+[ext_resource type="Texture2D" uid="uid://dnyquq66qhywe" path="res://scenes/enemies/spinner/assets/spinner_moving_5.svg" id="6_geeqq"]
+[ext_resource type="Texture2D" uid="uid://ci8ewfo4m62hl" path="res://scenes/enemies/spinner/assets/spinner_moving_6.svg" id="7_eisvm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxfit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f5ekb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n6qc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c5hhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cihpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_geeqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eisvm")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 60.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7twq"]
+radius = 40.0
+
+[node name="Spinner" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_8oe71")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_mxfit")
+animation = &"moving"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k7twq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

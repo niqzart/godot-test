@@ -55,12 +55,12 @@ script = ExtResource("1_5qwl3")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.57079
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_rqrko")
 animation = &"flying"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xer00")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

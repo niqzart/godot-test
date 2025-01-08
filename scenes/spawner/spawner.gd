@@ -1,6 +1,7 @@
 extends Node
 
 @export var enemy_scene: PackedScene
+@export var spinner_scene: PackedScene
 
 
 func start_spawning() -> void:
@@ -8,14 +9,18 @@ func start_spawning() -> void:
 
 
 func _on_spawn_timer_timeout() -> void:
-    var enemy: RigidBody2D = enemy_scene.instantiate()
+    var enemy: RigidBody2D
+    if randi_range(0, 1) == 0:
+        enemy = spinner_scene.instantiate()
+    else:
+        enemy = enemy_scene.instantiate()
 
     var spawn_location: PathFollow2D = $SpawnerPath/SpawnerLocation
     spawn_location.progress_ratio = randf()
 
     enemy.position = spawn_location.position
-    enemy.rotation = spawn_location.rotation + PI / 2 + randf_range(-PI / 4, PI / 4)
-    enemy.linear_velocity = Vector2(randf_range(150.0, 250.0), 0.0).rotated(enemy.rotation)
+    enemy.rotation = spawn_location.rotation + PI + randf_range(-PI / 4, PI / 4)
+    enemy.linear_velocity = Vector2(randf_range(150.0, 250.0), 0.0).rotated(enemy.rotation - PI / 2)
 
     enemy.add_to_group("enemies")
 
