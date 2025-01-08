@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://efy7iuhbld6x"]
+[gd_scene load_steps=6 format=3 uid="uid://efy7iuhbld6x"]
 
 [ext_resource type="Script" path="res://scenes/spawner/spawner.gd" id="1_iwbrr"]
-[ext_resource type="PackedScene" uid="uid://c6w14fnlfnfck" path="res://scenes/enemy/enemy.tscn" id="2_1ws2o"]
 [ext_resource type="PackedScene" uid="uid://f4bsd4tx4wp6" path="res://scenes/enemies/spinner/spinner.tscn" id="3_beunt"]
 [ext_resource type="PackedScene" uid="uid://ctxu11dajpxve" path="res://scenes/enemies/spider/spider.tscn" id="4_mhnhl"]
 [ext_resource type="PackedScene" uid="uid://dudxc53fwh0b8" path="res://scenes/enemies/copter/copter.tscn" id="5_047qu"]
@@ -14,7 +13,7 @@ point_count = 5
 
 [node name="Spawner" type="Node"]
 script = ExtResource("1_iwbrr")
-spawable_enemies = Array[PackedScene]([ExtResource("2_1ws2o"), ExtResource("4_mhnhl"), ExtResource("3_beunt"), ExtResource("5_047qu")])
+spawable_enemies = Array[PackedScene]([ExtResource("4_mhnhl"), ExtResource("3_beunt"), ExtResource("5_047qu")])
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
