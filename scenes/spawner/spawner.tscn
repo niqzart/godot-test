@@ -13,7 +13,7 @@ point_count = 5
 
 [node name="Spawner" type="Node"]
 script = ExtResource("1_iwbrr")
-spawable_enemies = Array[PackedScene]([ExtResource("4_mhnhl"), ExtResource("3_beunt"), ExtResource("5_047qu")])
+spawnable_enemies = Array[PackedScene]([ExtResource("4_mhnhl"), ExtResource("3_beunt"), ExtResource("5_047qu")])
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
