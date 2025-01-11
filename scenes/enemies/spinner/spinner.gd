@@ -24,7 +24,6 @@ func _move_along_the_arc(delta: float) -> void:
 
 func _ready() -> void:
     $AnimatedSprite2D.play("moving")
-    self.linear_velocity = Vector2.ZERO  # remove velocity from spawner
     self.progress_speed = randf_range(0.6, 1.2)
     self._start_arc()
 

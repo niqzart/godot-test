@@ -34,7 +34,6 @@ func _on_spawn_timer_timeout() -> void:
 
     enemy.position = spawn_location.position
     enemy.rotation = spawn_location.rotation + PI + randf_range(-PI / 4, PI / 4)
-    enemy.linear_velocity = Vector2(randf_range(150.0, 250.0), 0.0).rotated(enemy.rotation - PI / 2)
 
     enemy.add_to_group("enemies")
     enemy.tree_entered.connect(self._on_enemy_entered_tree.bind(enemy_type_index))
