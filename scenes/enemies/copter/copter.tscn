@@ -41,6 +41,7 @@ size = Vector2(114, 114)
 [node name="Copter" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
+linear_damp_mode = 1
 script = ExtResource("1_p47no")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -54,3 +55,7 @@ shape = SubResource("RectangleShape2D_5dl2e")
 [node name="DeletedOnScreenLeave" parent="." instance=ExtResource("5_8mb82")]
 position = Vector2(0, 108)
 scale = Vector2(0.4, 0.4)
+
+[node name="SpeedTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpeedTimer" to="." method="_on_speed_timer_timeout"]
