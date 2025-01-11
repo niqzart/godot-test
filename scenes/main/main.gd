@@ -6,8 +6,8 @@ var score: int
 func new_game() -> void:
     $Spawner.clear_spawned()
 
-    score = 0
-    $HUD.update_score(score)
+    self.score = 0
+    $HUD.update_score(self.score)
     $Player.start($StartPosition.position)
     $StartTimer.start()
 
@@ -21,8 +21,8 @@ func _on_start_timer_timeout() -> void:
 
 
 func _on_score_timer_timeout() -> void:
-    score += 1
-    $HUD.update_score(score)
+    self.score += 1
+    $HUD.update_score(self.score)
 
 
 func end_game() -> void:

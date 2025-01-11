@@ -7,14 +7,14 @@ var screen_size: Vector2
 
 
 func _ready() -> void:
-    hide()
-    screen_size = get_viewport_rect().size
+    self.hide()
+    self.screen_size = self.get_viewport_rect().size
 
 
 func start(starting_position: Vector2) -> void:
-    position = starting_position
+    self.position = starting_position
     $CollisionShape2D.disabled = false
-    show()
+    self.show()
 
 
 func _process(delta: float) -> void:
@@ -32,13 +32,13 @@ func _process(delta: float) -> void:
         $AnimatedSprite2D.stop()
         return
 
-    rotation = velocity.angle() + PI / 2
-    position += velocity.normalized() * speed * delta
-    position = position.clamp(Vector2.ZERO, screen_size)
+    self.rotation = velocity.angle() + PI / 2
+    self.position += velocity.normalized() * self.speed * delta
+    self.position = self.position.clamp(Vector2.ZERO, screen_size)
     $AnimatedSprite2D.play()
 
 
 func _on_body_entered(_body: Node2D) -> void:
-    hide()
-    hit.emit()
+    self.hide()
+    self.hit.emit()
     $CollisionShape2D.set_deferred("disabled", true)

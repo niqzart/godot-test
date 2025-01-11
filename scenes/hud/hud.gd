@@ -12,7 +12,7 @@ func _on_start_button_pressed() -> void:
     $ScoreLabel.show()
     $MenuGridContainer/StartButton.hide()
     $MenuGridContainer/GameOverLabel.hide()
-    start_game.emit()
+    self.start_game.emit()
 
 
 func update_score(score: int) -> void:
