@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://f4bsd4tx4wp6"]
+[gd_scene load_steps=12 format=3 uid="uid://f4bsd4tx4wp6"]
 
 [ext_resource type="Script" path="res://scenes/enemies/spinner/spinner.gd" id="1_8oe71"]
 [ext_resource type="Texture2D" uid="uid://gixfukttmfro" path="res://scenes/enemies/spinner/assets/spinner_moving_1.svg" id="2_f5ekb"]
@@ -38,9 +38,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7twq"]
 radius = 40.0
 
+[sub_resource type="Curve2D" id="Curve2D_2pxnk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 64, 0, -64, -80, -96, 0, 0, 0, 0, 0, -192)
+}
+point_count = 3
+
 [node name="Spinner" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
+linear_damp_mode = 1
 script = ExtResource("1_8oe71")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -54,3 +61,10 @@ shape = SubResource("CircleShape2D_k7twq")
 [node name="DeletedOnScreenLeave" parent="." instance=ExtResource("8_7lpbb")]
 position = Vector2(-2.38419e-07, 48)
 scale = Vector2(0.4, 0.4)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2pxnk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+loop = false
