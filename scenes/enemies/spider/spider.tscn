@@ -32,6 +32,7 @@ radius = 40.0
 [node name="Spider" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
+angular_damp_mode = 1
 script = ExtResource("1_kr8c8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -46,3 +47,12 @@ shape = SubResource("CircleShape2D_futqh")
 [node name="DeletedOnScreenLeave" parent="." instance=ExtResource("5_k51eo")]
 position = Vector2(4.76837e-07, 40)
 scale = Vector2(0.4, 0.4)
+
+[node name="CrawlTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SpinTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CrawlTimer" to="." method="_on_crawl_timer_timeout"]
+[connection signal="timeout" from="SpinTimer" to="." method="_on_spin_timer_timeout"]
