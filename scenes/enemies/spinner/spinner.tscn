@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cqq7y4ws1i5xy" path="res://scenes/enemies/spinner/assets/spinner_moving_4.svg" id="5_cihpw"]
 [ext_resource type="Texture2D" uid="uid://dnyquq66qhywe" path="res://scenes/enemies/spinner/assets/spinner_moving_5.svg" id="6_geeqq"]
 [ext_resource type="Texture2D" uid="uid://ci8ewfo4m62hl" path="res://scenes/enemies/spinner/assets/spinner_moving_6.svg" id="7_eisvm"]
-[ext_resource type="PackedScene" uid="uid://b4iujhi3h0ikh" path="res://scenes/components/deleted_on_screen_leave/deleted_on_screen_leave.tscn" id="8_7lpbb"]
+[ext_resource type="PackedScene" uid="uid://bhg03iufnrn5" path="res://scenes/components/deleted_if_out_of_bounds/deleted_if_out_of_bounds.tscn" id="8_f0iwd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mxfit"]
 animations = [{
@@ -58,13 +58,11 @@ animation = &"moving"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k7twq")
 
-[node name="DeletedOnScreenLeave" parent="." instance=ExtResource("8_7lpbb")]
-position = Vector2(-2.38419e-07, 48)
-scale = Vector2(0.4, 0.4)
-
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_2pxnk")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 rotates = false
 loop = false
+
+[node name="DeletedIfOutOfBounds" parent="." instance=ExtResource("8_f0iwd")]

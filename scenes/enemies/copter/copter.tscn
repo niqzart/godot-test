@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://5tj0bj6o4scl" path="res://scenes/enemies/copter/assets/copter_moving_1.svg" id="2_a4yr7"]
 [ext_resource type="Texture2D" uid="uid://ce3sq5qcy71tf" path="res://scenes/enemies/copter/assets/copter_moving_2.svg" id="3_wawy2"]
 [ext_resource type="Texture2D" uid="uid://o85yqiprs5q1" path="res://scenes/enemies/copter/assets/copter_moving_3.svg" id="4_b1ctm"]
-[ext_resource type="PackedScene" uid="uid://b4iujhi3h0ikh" path="res://scenes/components/deleted_on_screen_leave/deleted_on_screen_leave.tscn" id="5_8mb82"]
 [ext_resource type="Texture2D" uid="uid://q8ktr3on51oc" path="res://scenes/enemies/copter/assets/copter_moving_4.svg" id="5_ggtqq"]
 [ext_resource type="Texture2D" uid="uid://dp478qsyd4cyo" path="res://scenes/enemies/copter/assets/copter_moving_5.svg" id="6_0tb86"]
 [ext_resource type="Texture2D" uid="uid://0yrgmdxgjggu" path="res://scenes/enemies/copter/assets/copter_moving_6.svg" id="7_uppbo"]
+[ext_resource type="PackedScene" uid="uid://bhg03iufnrn5" path="res://scenes/components/deleted_if_out_of_bounds/deleted_if_out_of_bounds.tscn" id="8_3q14a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mxfit"]
 animations = [{
@@ -52,10 +52,8 @@ animation = &"moving"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5dl2e")
 
-[node name="DeletedOnScreenLeave" parent="." instance=ExtResource("5_8mb82")]
-position = Vector2(0, 108)
-scale = Vector2(0.4, 0.4)
-
 [node name="SpeedTimer" type="Timer" parent="."]
+
+[node name="DeletedIfOutOfBounds" parent="." instance=ExtResource("8_3q14a")]
 
 [connection signal="timeout" from="SpeedTimer" to="." method="_on_speed_timer_timeout"]

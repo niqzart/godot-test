@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhg03iufnrn5"]
+
+[ext_resource type="Script" path="res://scenes/components/deleted_if_out_of_bounds/deleted_if_out_of_bounds.gd" id="1_ljtny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2tfi"]
+
+[node name="DeletedIfOutOfBounds" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_ljtny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k2tfi")
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

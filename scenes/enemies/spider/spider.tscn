@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d10warh6eunh6" path="res://scenes/enemies/spider/assets/spider_moving_3.svg" id="2_y6t7b"]
 [ext_resource type="Texture2D" uid="uid://co8aj6y4wanm3" path="res://scenes/enemies/spider/assets/spider_moving_1.svg" id="3_43g8r"]
 [ext_resource type="Texture2D" uid="uid://y8r1h6mle007" path="res://scenes/enemies/spider/assets/spider_moving_2.svg" id="4_jfyfn"]
-[ext_resource type="PackedScene" uid="uid://b4iujhi3h0ikh" path="res://scenes/components/deleted_on_screen_leave/deleted_on_screen_leave.tscn" id="5_k51eo"]
+[ext_resource type="PackedScene" uid="uid://bhg03iufnrn5" path="res://scenes/components/deleted_if_out_of_bounds/deleted_if_out_of_bounds.tscn" id="5_261ob"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mxfit"]
 animations = [{
@@ -44,15 +44,13 @@ animation = &"moving"
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_futqh")
 
-[node name="DeletedOnScreenLeave" parent="." instance=ExtResource("5_k51eo")]
-position = Vector2(4.76837e-07, 40)
-scale = Vector2(0.4, 0.4)
-
 [node name="CrawlTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="SpinTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DeletedIfOutOfBounds" parent="." instance=ExtResource("5_261ob")]
 
 [connection signal="timeout" from="CrawlTimer" to="." method="_on_crawl_timer_timeout"]
 [connection signal="timeout" from="SpinTimer" to="." method="_on_spin_timer_timeout"]

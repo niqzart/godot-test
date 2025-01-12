@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch4l2ierqwwhg"]
+[gd_scene load_steps=9 format=3 uid="uid://ch4l2ierqwwhg"]
 
 [ext_resource type="PackedScene" uid="uid://bxrxxd8k4gese" path="res://scenes/player/player.tscn" id="1_dal62"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_uaoic"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://efy7iuhbld6x" path="res://scenes/spawner/spawner.tscn" id="4_h70lj"]
 [ext_resource type="AudioStream" uid="uid://cqccdrlcxra3x" path="res://scenes/main/assets/soundtrack_loop.ogg" id="5_fvqcb"]
 [ext_resource type="AudioStream" uid="uid://b2adwtg5h3yg1" path="res://scenes/main/assets/game_over.wav" id="5_whsf5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn1gp"]
+size = Vector2(1072, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5iwq"]
+size = Vector2(1152, 640)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_uaoic")
@@ -30,6 +36,22 @@ stream = ExtResource("5_fvqcb")
 
 [node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_whsf5")
+
+[node name="BoundsArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="BoundsShape" type="CollisionShape2D" parent="BoundsArea"]
+position = Vector2(512, 256)
+shape = SubResource("RectangleShape2D_vn1gp")
+
+[node name="BoundsArea2" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="BoundsShape2" type="CollisionShape2D" parent="BoundsArea2"]
+position = Vector2(512, 256)
+shape = SubResource("RectangleShape2D_a5iwq")
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
