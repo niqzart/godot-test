@@ -1,11 +1,13 @@
-extends Node
+extends Node2D
 
+var center_position: Vector2
 @export var spawnable_enemies: Array[PackedScene]
 var enemy_count_limits: Array[int] = [3, 3, 3]
 var enemy_counts: Array[int] = []
 
 
 func _ready() -> void:
+    self.center_position = self.get_viewport_rect().size / 2.0
     for spawnable_eneny in self.spawnable_enemies:
         self.enemy_counts.append(0)
 
@@ -31,9 +33,10 @@ func _on_spawn_timer_timeout() -> void:
 
     var spawn_location: PathFollow2D = $SpawnerPath/SpawnerLocation
     spawn_location.progress_ratio = randf()
+    spawn_location.look_at(self.center_position)
 
     enemy.position = spawn_location.position
-    enemy.rotation = spawn_location.rotation + PI + randf_range(-PI / 4, PI / 4)
+    enemy.rotation = spawn_location.rotation + PI / 2 + randf_range(-PI / 4, PI / 4)
 
     enemy.add_to_group("enemies")
     enemy.tree_entered.connect(self._on_enemy_entered_tree.bind(enemy_type_index))
